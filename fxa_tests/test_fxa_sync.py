@@ -15,6 +15,7 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
 
     def setUp(self):
         super(TestFxaSync, self).setUp()
+        self.marionette.set_pref('network.tcp.tcp_fastopen_enable', False)
 
         self.locationbar = self.browser.navbar.locationbar
         self.identity_popup = self.browser.navbar.locationbar.identity_popup
