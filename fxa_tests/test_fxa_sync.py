@@ -39,20 +39,6 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
         email_pattern = account_email + '@' + hostname
 
         with self.marionette.using_context('content'):
-
-            # Bug workaround starts: https://bugzilla.mozilla.org/show_bug.cgi?id=1363223
-            self.marionette.timeout.page_load = 10
-            try:
-                self.marionette.navigate(self.url_signup)
-            except:
-                print 'Loading...'
-            with self.marionette.using_context(self.marionette.CONTEXT_CHROME):
-                self.marionette.find_element(By.ID, 'urlbar-reload-button').click()
-
-            self.marionette.timeout.page_load = 300
-            self.marionette.navigate('http://example.com')
-            # Bug workaround ends
-
             self.marionette.navigate(self.url_signup)
 
             Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
