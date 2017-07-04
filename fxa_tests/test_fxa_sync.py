@@ -122,9 +122,15 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '.login > a:nth-child(2)'))
             button_login.click()
 
-            fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.use-logged-in'))
-            fxa_login.click()
+            input_email = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+                expected.element_present(By.CSS_SELECTOR, '.input-row .email'))
+            input_email.send_keys(email_pattern)
+
+            input_password = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+                expected.element_present(By.ID, 'password'))
+            input_password.send_keys(password)
+
+            self.marionette.find_element(By.ID, 'submit-btn').click()
 
             Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '.logout'))
@@ -136,9 +142,11 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '.login-btn-firefox'))
             button_login.click()
 
-            fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.use-logged-in'))
-            fxa_login.click()
+            input_password = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+                expected.element_present(By.ID, 'password'))
+            input_password.send_keys(password)
+
+            self.marionette.find_element(By.ID, 'submit-btn').click()
 
             fxa_accept = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '#accept'))
@@ -158,9 +166,11 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '#fxa-sign-in'))
             button_login.click()
 
-            fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.use-logged-in'))
-            fxa_login.click()
+            input_password = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+                expected.element_present(By.ID, 'password'))
+            input_password.send_keys(password)
+
+            self.marionette.find_element(By.ID, 'submit-btn').click()
 
             Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '#sign-out'))
@@ -202,8 +212,8 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '#clients .settings-button'))
             device_prefs.click()
 
-            Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '#clients .client-current'))
+            #Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+            #    expected.element_present(By.CSS_SELECTOR, '#clients .client-current'))
 
             # Display Name
 
