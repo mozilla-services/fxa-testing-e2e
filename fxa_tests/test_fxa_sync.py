@@ -15,7 +15,9 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
 
     def setUp(self):
         super(TestFxaSync, self).setUp()
+        ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:57.0) Gecko/20100101 Firefox/57.0 FxATester/1.0'
         self.marionette.set_pref('network.tcp.tcp_fastopen_enable', False)
+        self.marionette.set_pref('general.useragent.override', ua)
 
         self.locationbar = self.browser.navbar.locationbar
         self.identity_popup = self.browser.navbar.locationbar.identity_popup
@@ -106,7 +108,7 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
             time.sleep(3)
 
             # Switch to the new Window
-            self.marionette.switch_to_window(self.marionette.window_handles[1])
+            #self.marionette.switch_to_window(self.marionette.window_handles[1])
 
             # Account settings
 
