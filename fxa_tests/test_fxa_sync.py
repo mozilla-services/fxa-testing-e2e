@@ -132,11 +132,11 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '.logout'))
 
             # Pocket
-            self.marionette.navigate('https://getpocket.com/login')
+            self.marionette.navigate('https://getpocket.com/ff_signin?s=pocket&t=login')
 
-            button_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.login-btn-firefox'))
-            button_login.click()
+            #button_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
+            #    expected.element_present(By.CSS_SELECTOR, '.login-btn-firefox'))
+            #button_login.click()
 
             fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '.use-logged-in'))
