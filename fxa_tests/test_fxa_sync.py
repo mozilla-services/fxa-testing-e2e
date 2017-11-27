@@ -121,7 +121,7 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
             self.marionette.navigate('https://addons.mozilla.org/en-US/firefox/')
 
             button_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.login > a:nth-child(2)'))
+                expected.element_present(By.CSS_SELECTOR, '.Header-authenticate-button'))
             button_login.click()
 
             fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
@@ -129,14 +129,10 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
             fxa_login.click()
 
             Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.logout'))
+                expected.element_present(By.CSS_SELECTOR, '.Header-authenticate-button .DropdownMenu-button-text'))
 
             # Pocket
-            self.marionette.navigate('https://getpocket.com/login')
-
-            button_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '.login-btn-firefox'))
-            button_login.click()
+            self.marionette.navigate('https://getpocket.com/ff_signin?s=pocket&t=login')
 
             fxa_login = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '.use-logged-in'))
@@ -189,20 +185,14 @@ class TestFxaSync(PuppeteerMixin, MarionetteTestCase):
                 expected.element_present(By.CSS_SELECTOR, '#communication-preferences .settings-button'))
             comm_prefs.click()
 
-            Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '#preferences-url'))
-
             # Unsubscribe
 
             sub_button = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '#marketing-email-optin'))
-            sub_button.click()
+                expected.element_present(By.CSS_SELECTOR, '#marketing-email-manage'))
 
             # Devices, check the device is in settings
 
-            device_prefs = Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
-                expected.element_present(By.CSS_SELECTOR, '#clients .settings-button'))
-            device_prefs.click()
+            self.marionette.navigate(self.url_settings + '/clients')
 
             Wait(self.marionette, timeout=self.marionette.timeout.page_load).until(
                 expected.element_present(By.CSS_SELECTOR, '#clients .client-current'))
