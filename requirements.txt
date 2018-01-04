@@ -4,10 +4,9 @@ mozbuild==0.2
 mozdownload==1.22
 mozfile==1.2
 mozinfo==0.9
-mozInstall==1.12
+mozInstall==1.15
 progressbar==2.2
 redo==1.5
 requests==2.9.1
 requests-hawk==1.0.0
 six==1.10.0
-treeherder-client==3.0.0
