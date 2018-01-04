@@ -2,7 +2,7 @@
 
 > A set of end-to-end tests that make sure that Firefox Accounts and Firefox Sync do not regress.
 
-[![CircleCI](https://circleci.com/gh/mozilla-services/fxa-testing-e2e.svg?style=svg)](https://circleci.com/gh/mozilla-services/fxa-testing-e2e)
+[![CircleCI](https://circleci.com/gh/mozilla-services/fxa-testing-e2e.svg?style=svg)](https://circleci.com/gh/mozilla-services/fxa-testing-e2e) [![Updates](https://pyup.io/repos/github/mozilla-services/fxa-testing-e2e/shield.svg)](https://pyup.io/repos/github/mozilla-services/fxa-testing-e2e/)
 
 .. image:: https://pyup.io/repos/github/mozilla-services/fxa-testing-e2e/shield.svg
     :target: https://pyup.io/repos/github/mozilla-services/fxa-testing-e2e/
