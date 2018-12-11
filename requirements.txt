@@ -7,6 +7,6 @@ mozinfo==0.9
 mozInstall==1.15
 progressbar==2.2
 redo==1.5
-requests==2.19.1
+requests==2.21.0
 requests-hawk==1.0.0
 six==1.10.0
